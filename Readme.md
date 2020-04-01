@@ -1,4 +1,4 @@
-# New Document# U07 | Eieruhr
+# U07 | Eieruhr
 
 ![Cover für die siebte Übungsaufgabe](./docs/cover.png)
 
@@ -10,6 +10,7 @@
 ## Aufgabe
 
 In dieser Übungsaufgabe sollen Sie eine Eieruhr programmieren. Der Nutzer soll in der Lage sein, die Größe des Eis auszuwählen und anschließend noch die gewünschte Konsistenz auswählen können. Die App berechnet die optimale Kochdauer. Mit einem Klick auf Start wird die Restzeit heruntergezählt. Nach Ablauf der Kochzeit wird der Nutzer durch einen Dialog und Vibration, bzw. falls die App im Hintergrund läuft, über eine **Notification** benachrichtigt.
+
 ![Screenshot der EggTimer-App](./docs/screenshot-1.png "Startbildschirm der App")
 
 ## Hinweise
