@@ -20,7 +20,7 @@ header-includes: |
       \cfoot[C]{\includegraphics[height=2cm]{docs/footer.png}}}
 ---
 
-# U07 | EggTimer: Die Eieruhg
+# U07 | EggTimer: Die Eieruhr
 
 ![Cover für die siebte Übungsaufgabe](./docs/cover.png)
 
@@ -44,12 +44,22 @@ Für die spätere Kommunikation zwischen Service und Activity verwenden wir [Bro
 
 **Service informiert Activity über verbleibende Zeit**
 
-Möchten Sie die Activity aus Ihrem Service über die verbleibende Zeit des *Timers* informieren, machen Sie das mit diesem Befehl `sendBroadcast(EggTimerBroadcastReceiver.getUpdateIntent(REMAINING_TIME));`. Ersetzten Sie `REMAINING_TIME` durch den entsprechenden Wert in Sekunden.
+Möchten Sie die Activity aus Ihrem Service über die verbleibende Zeit des *Timers* informieren, machen Sie das mit diesem Befehl:
+
+``` java
+sendBroadcast(EggTimerBroadcastReceiver.getUpdateIntent(REMAINING_TIME));
+```
+
+Ersetzten Sie `REMAINING_TIME` durch den entsprechenden Wert in Sekunden.
 
 
 **Service informiert Activity über vollständig abgelaufene Zeit**
 
-Möchten Sie die Activity aus Ihrem Service darüber informieren, dass die Zeit im *Timer* vollständig abgelaufen ist, machen Sie das mit diesem Befehl `sendBroadcast(EggTimerBroadcastReceiver.getEndIntent());`
+Möchten Sie die Activity aus Ihrem Service darüber informieren, dass die Zeit im *Timer* vollständig abgelaufen ist, machen Sie das mit diesem Befehl: 
+
+```java
+sendBroadcast(EggTimerBroadcastReceiver.getEndIntent());
+```
 
 ## Vorgehen
 
