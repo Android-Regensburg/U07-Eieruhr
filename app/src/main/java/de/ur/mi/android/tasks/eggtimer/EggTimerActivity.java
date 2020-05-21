@@ -1,6 +1,7 @@
 package de.ur.mi.android.tasks.eggtimer;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,11 +11,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import de.mi.eggtimer.R;
 import de.ur.mi.android.tasks.eggtimer.broadcast.EggTimerBroadcastListener;
 import de.ur.mi.android.tasks.eggtimer.broadcast.EggTimerBroadcastReceiver;
 import de.ur.mi.android.tasks.eggtimer.timer.EggOrder;
+import de.ur.mi.android.tasks.eggtimer.timer.EggTimer;
+import de.ur.mi.android.tasks.eggtimer.timer.EggTimerListener;
 
 public class EggTimerActivity extends AppCompatActivity implements EggTimerBroadcastListener {
 
@@ -108,6 +113,18 @@ public class EggTimerActivity extends AppCompatActivity implements EggTimerBroad
         // @TODO: Implementieren Sie einen Timer, der parallel zum UI Thread die benötigte Zeit herunterzählt
         // @TODO: Lagern Sie den Timer in einen Service aus, der auch dann weiterläuft, wenn die Activity beendet wird
         Log.d("EGG_TIMER", "Should start EggTimer for " + order.targetTime + " seconds");
+        EggTimer timer = new EggTimer(this, order, new EggTimerListener() {
+            @Override
+            public void onUpdate(int remainingTimeInSeconds) {
+                updateTimerValue(remainingTimeInSeconds);
+            }
+
+            @Override
+            public void onFinished() {
+                updateTimerValue(0);
+            }
+        });
+        timer.start();
     }
 
     /**
