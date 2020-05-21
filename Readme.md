@@ -85,6 +85,22 @@ Erweitern Sie Ihre Anwendung jetzt um einen [Vordergrund-Service](https://develo
 
 **Achtung**: Damit Ihr Service möglichst sicher vor dem automatischen Beenden durch das Android-System ist, müssen Sie ihn explizit in den Vordergrund verschieben. Führen Sie dazu die Methode [`startForeground`](https://developer.android.com/reference/android/app/Service#startForeground(int,%20android.app.Notification)) in der `onCreate`-Methode Ihres Services aus. Dabei zwingt das Android-System Sie dazu [eine Notification zu erstellen](https://developer.android.com/guide/components/services#Foreground), die NutzerInnen darüber informiert, dass Teile Ihrer Anwendung - der Service - noch aktiv sind, obwohl ggf. keine Activities mehr sichtbar sind.
 
+#### Notification Channel
+
+Ihre App benötigt einen *Channel*, über den die *Notifications* versendet werden. Den können Sie (auch im Service) z.B. mit dieser Methode erstellen:
+
+``` java
+private void createNotificationChannel() {
+  // NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NOTIFICATION_CHANNEL_DESCRIPTION müssen irgendwo definiert werden!
+  NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+  channel.setDescription(NOTIFICATION_CHANNEL_DESCRIPTION);
+  NotificationManager notificationManager = getSystemService(NotificationManager.class);
+  notificationManager.createNotificationChannel(channel);
+ }
+```
+
+Über die vergebene ID (erster Parameter des Konstruktors), können Sie diesen Kanal dann später beim Erstellen einzelner *Notifications* verwenden.
+
 ## Screenshots der Anwendung
 
 | | | |
