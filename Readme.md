@@ -91,8 +91,10 @@ Ihre App benötigt einen *Channel*, über den die *Notifications* versendet werd
 
 ``` java
 private void createNotificationChannel() {
-  // NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NOTIFICATION_CHANNEL_DESCRIPTION müssen irgendwo definiert werden!
-  NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+  // NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, 
+  // NOTIFICATION_CHANNEL_DESCRIPTION müssen irgendwo definiert werden!
+  NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, 
+    NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
   channel.setDescription(NOTIFICATION_CHANNEL_DESCRIPTION);
   NotificationManager notificationManager = getSystemService(NotificationManager.class);
   notificationManager.createNotificationChannel(channel);
