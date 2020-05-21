@@ -47,7 +47,7 @@ Für die spätere Kommunikation zwischen Service und Activity verwenden wir [Bro
 Möchten Sie die Activity aus Ihrem Service über die verbleibende Zeit des *Timers* informieren, machen Sie das mit diesem Befehl `sendBroadcast(EggTimerBroadcastReceiver.getUpdateIntent(REMAINING_TIME));`. Ersetzten Sie `REMAINING_TIME` durch den entsprechenden Wert in Sekunden.
 
 
-** Service informiert Activity über vollständig abgelaufene Zeit**
+**Service informiert Activity über vollständig abgelaufene Zeit**
 
 Möchten Sie die Activity aus Ihrem Service darüber informieren, dass die Zeit im *Timer* vollständig abgelaufen ist, machen Sie das mit diesem Befehl `sendBroadcast(EggTimerBroadcastReceiver.getEndIntent());`
 
