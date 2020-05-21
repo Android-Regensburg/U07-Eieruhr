@@ -1,5 +1,6 @@
 package de.ur.mi.android.tasks.eggtimer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -20,6 +21,7 @@ import de.ur.mi.android.tasks.eggtimer.broadcast.EggTimerBroadcastReceiver;
 import de.ur.mi.android.tasks.eggtimer.timer.EggOrder;
 import de.ur.mi.android.tasks.eggtimer.timer.EggTimer;
 import de.ur.mi.android.tasks.eggtimer.timer.EggTimerListener;
+import de.ur.mi.android.tasks.eggtimer.timer.EggTimerService;
 
 public class EggTimerActivity extends AppCompatActivity implements EggTimerBroadcastListener {
 
@@ -107,24 +109,9 @@ public class EggTimerActivity extends AppCompatActivity implements EggTimerBroad
     private void startTimeFor(EggOrder order) {
         // An dieser Stelle wissen wir, was für eine Ei-Variation die NutzerInnen kochen möchten.
         // Über order.targetTime erhalten Sie die Zeit in Sekunden, die der Timer laufen soll.
-        //
-        // Starten Sie hier das nebenläufige Herunterzählen des Timers und verbinden Sie den Thread
-        // und später den Service mit dieser Activity.
-        // @TODO: Implementieren Sie einen Timer, der parallel zum UI Thread die benötigte Zeit herunterzählt
-        // @TODO: Lagern Sie den Timer in einen Service aus, der auch dann weiterläuft, wenn die Activity beendet wird
-        Log.d("EGG_TIMER", "Should start EggTimer for " + order.targetTime + " seconds");
-        EggTimer timer = new EggTimer(this, order, new EggTimerListener() {
-            @Override
-            public void onUpdate(int remainingTimeInSeconds) {
-                updateTimerValue(remainingTimeInSeconds);
-            }
-
-            @Override
-            public void onFinished() {
-                updateTimerValue(0);
-            }
-        });
-        timer.start();
+        Intent intent = new Intent(this, EggTimerService.class);
+        intent.putExtra(EggTimerService.EGG_ORDER_EXTRA_KEY, order);
+        startService(intent);
     }
 
     /**
@@ -141,11 +128,11 @@ public class EggTimerActivity extends AppCompatActivity implements EggTimerBroad
 
     @Override
     public void onTimerUpdate(int remainingTimeInSeconds) {
-        // Hier können Sie die per Broadcast vom Service ausgesendenten Updates verarbeiten
+        updateTimerValue(remainingTimeInSeconds);
     }
 
     @Override
     public void onTimerFinished() {
-        // Hier können Sie die per Broadcast vom Service ausgesendenten Updates verarbeiten
+        updateTimerValue(0);
     }
 }

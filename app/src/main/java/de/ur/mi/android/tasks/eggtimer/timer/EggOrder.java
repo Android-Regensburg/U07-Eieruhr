@@ -1,9 +1,11 @@
 package de.ur.mi.android.tasks.eggtimer.timer;
 
+import java.io.Serializable;
+
 /**
  * Repräsentiert eine "Bestellung" für ein gekochtes Eier der gewünchsten Zubereitungsart (EggVariation)
  */
-public class EggOrder {
+public class EggOrder implements Serializable {
 
     public final int targetTime;
 

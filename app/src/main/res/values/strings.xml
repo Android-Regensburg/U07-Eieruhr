@@ -8,6 +8,11 @@
     <string name="button_label">Start</string>
     <string name="timer_label">Dein Ei wird fertig sein in:</string>
     <string name="timer_description">Hier kannst du auswählen, wie du dein Ei zubereiten möchtest. Drücke danach auf Start, um den Timer zu starten.</string>
+    <string name="foreground_notification_title">EggTimer</string>
+    <string name="foreground_notification_text">Noch läuft der Timer</string>
+    <string name="foreground_notification_ticker">Keine Sorge, wir achten im Hintergrund auf dein Frühstücksei und geben Bescheid, sobald es fertig ist.</string>
+    <string name="timer_finished_notification_title">Fertig!</string>
+    <string name="timer_finished_notification_text">Die Zeit ist um, dein Ei ist fertig!</string>
 
     <string-array name="variation_values">
         <item>Weichgekocht</item>
