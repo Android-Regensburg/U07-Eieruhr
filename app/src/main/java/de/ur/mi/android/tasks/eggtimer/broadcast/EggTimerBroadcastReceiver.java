@@ -9,7 +9,7 @@ public class EggTimerBroadcastReceiver extends BroadcastReceiver {
 
     private static final String TIMER_UPDATE = "de.ur.mi.android.task.eggtimer.TIMER_UPDATE";
     private static final String TIMER_FINISHED = "de.ur.mi.android.task.eggtimer.TIMER_FINISHED";
-    public static final String REMAINING_TIME_IN_SECONDS = "REMAINING_TIME_IN_SECONDS";
+    private static final String REMAINING_TIME_IN_SECONDS = "REMAINING_TIME_IN_SECONDS";
 
     private EggTimerBroadcastListener listener;
 
@@ -35,6 +35,27 @@ public class EggTimerBroadcastReceiver extends BroadcastReceiver {
         filter.addAction(EggTimerBroadcastReceiver.TIMER_UPDATE);
         filter.addAction(EggTimerBroadcastReceiver.TIMER_FINISHED);
         return filter;
+    }
+
+    /**
+     * Erzeugt einen Intent, der diesen BroadcastReceiver darüber informiert, wieviele Sekunden im
+     * Timer noch verbleiben.
+     */
+    public static Intent getUpdateIntent(int remainingTimeInSeconds) {
+        Intent intent = new Intent();
+        intent.setAction(TIMER_UPDATE);
+        intent.putExtra(REMAINING_TIME_IN_SECONDS,remainingTimeInSeconds);
+        return intent;
+    }
+
+    /**
+     * Erzeugt einen Intent, der diesen BroadcastReceiver darüber informiert, dass die Zeit im Timer
+     * vollständig abgelaufen ist.
+     */
+    public static Intent getEndIntent() {
+        Intent intent = new Intent();
+        intent.setAction(TIMER_FINISHED);
+        return intent;
     }
 
 }

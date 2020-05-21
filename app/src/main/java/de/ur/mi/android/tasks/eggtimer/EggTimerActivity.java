@@ -1,8 +1,5 @@
 package de.ur.mi.android.tasks.eggtimer;
 
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -110,7 +107,7 @@ public class EggTimerActivity extends AppCompatActivity implements EggTimerBroad
         // und später den Service mit dieser Activity.
         // @TODO: Implementieren Sie einen Timer, der parallel zum UI Thread die benötigte Zeit herunterzählt
         // @TODO: Lagern Sie den Timer in einen Service aus, der auch dann weiterläuft, wenn die Activity beendet wird
-        Log.d("EGG_TIMER", "Should start EggTimer for " + order.targetTime + " seonds");
+        Log.d("EGG_TIMER", "Should start EggTimer for " + order.targetTime + " seconds");
     }
 
     /**
