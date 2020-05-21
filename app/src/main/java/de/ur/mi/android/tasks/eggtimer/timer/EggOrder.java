@@ -26,8 +26,8 @@ public class EggOrder {
      * @TODO: Den Auswahlprozess kann man sicherlich noch schöner und sicherer gestalten. Gerne können Sie die Methode anpassen und optimieren.
      */
     public static EggOrder fromString(String value, String[] validValues) {
-        for(int i = 0; i < validValues.length; i++) {
-            if(value.equals(validValues[i])) {
+        for (int i = 0; i < validValues.length; i++) {
+            if (value.equals(validValues[i])) {
                 return new EggOrder(EggVariation.values()[i]);
             }
         }
