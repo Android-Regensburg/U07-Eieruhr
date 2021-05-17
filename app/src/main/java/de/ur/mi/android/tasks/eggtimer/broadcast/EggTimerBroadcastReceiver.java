@@ -5,18 +5,32 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
+/**
+ * Der BroadcastReceiver empfängt Broadcasts anderer Android-Apps oder, in diesem Fall, eines Hintergrundservices unserer App.
+ * Hier soll bei Änderung oder Ablauf des Timers später die EggTimerActivity informiert werden.
+ */
 public class EggTimerBroadcastReceiver extends BroadcastReceiver {
 
+    /**
+     * Konstanten zur Unterscheidung der Broadcast-Nachrichten
+     */
     private static final String TIMER_UPDATE = "de.ur.mi.android.task.eggtimer.TIMER_UPDATE";
     private static final String TIMER_FINISHED = "de.ur.mi.android.task.eggtimer.TIMER_FINISHED";
     private static final String REMAINING_TIME_IN_SECONDS = "REMAINING_TIME_IN_SECONDS";
 
+    /**
+     * Über den EggTimerBroadcastListener kann die Activity informiert werden
+     */
     private final EggTimerBroadcastListener listener;
 
     public EggTimerBroadcastReceiver(EggTimerBroadcastListener listener) {
         this.listener = listener;
     }
 
+    /**
+     * Die onReceive-Callback-Methode wird aufgerufen, wenn Broadcasts mit den Aktionsbezeichnern empfangen werden,
+     * für die die Activity sich registriert. Je nach Action wird die jeweilige Callback-Methode des EggTimerBroadcastListeners gecalled
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         switch (intent.getAction()) {
@@ -30,6 +44,9 @@ public class EggTimerBroadcastReceiver extends BroadcastReceiver {
         }
     }
 
+    /**
+     * Durch IntentFilter kann bestimmt wird, für welche Art von Broadcasts die App bzw. die Activity sich interessiert
+     */
     public static IntentFilter getIntentFilter() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(EggTimerBroadcastReceiver.TIMER_UPDATE);
