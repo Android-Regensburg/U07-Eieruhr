@@ -11,7 +11,7 @@ public class EggTimerBroadcastReceiver extends BroadcastReceiver {
     private static final String TIMER_FINISHED = "de.ur.mi.android.task.eggtimer.TIMER_FINISHED";
     private static final String REMAINING_TIME_IN_SECONDS = "REMAINING_TIME_IN_SECONDS";
 
-    private EggTimerBroadcastListener listener;
+    private final EggTimerBroadcastListener listener;
 
     public EggTimerBroadcastReceiver(EggTimerBroadcastListener listener) {
         this.listener = listener;
