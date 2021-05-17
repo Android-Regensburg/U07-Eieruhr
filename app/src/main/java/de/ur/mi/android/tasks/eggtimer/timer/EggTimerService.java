@@ -90,25 +90,23 @@ public class EggTimerService extends Service {
     private Notification getNotificationForForegroundService() {
         Intent notificationIntent = new Intent(this, EggTimerActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-        Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+        return new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                         .setContentTitle(getText(R.string.foreground_notification_title))
                         .setContentText(getText(R.string.foreground_notification_text))
                         .setSmallIcon(R.drawable.ic_timer_icon_foreground)
                         .setContentIntent(pendingIntent)
                         .setTicker(getText(R.string.foreground_notification_ticker))
                         .build();
-        return notification;
     }
 
     private Notification getNotificationForFinishedTimer() {
         Intent notificationIntent = new Intent(this, EggTimerActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-        Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+        return new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                 .setContentTitle(getText(R.string.timer_finished_notification_title))
                 .setContentText(getText(R.string.timer_finished_notification_text))
                 .setSmallIcon(R.drawable.ic_timer_icon_foreground)
                 .setContentIntent(pendingIntent)
                 .build();
-        return notification;
     }
 }
