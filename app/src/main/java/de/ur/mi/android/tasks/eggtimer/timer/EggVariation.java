@@ -5,7 +5,7 @@ package de.ur.mi.android.tasks.eggtimer.timer;
  */
 public enum EggVariation {
 
-    // Weichgekochter Eier werden 3 Minuten gekocht
+    // Weichgekochte Eier werden 3 Minuten gekocht
     SOFT(180),
     // Mittelweiche Eier werden 5 Minuten gekocht
     MEDIUM(300),
